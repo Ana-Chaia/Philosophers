@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:25:10 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/22 13:40:18 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:18:43 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,25 +22,39 @@
 # include <stdbool.h>
 #include <sys/time.h>
 
+typedef struct s_philo
+{
+	int			nbr;
+	int			meals;
+	_Bool		is_dead;
+	t_mutex		nbr_of_meals_locker;
+	t_mutex		*right_fork;
+	t_mutex		*left_fork;
+	suseconds_t	last_meal;
+	t_state		*philo_state;
+	pthread_t	own_thread;
+
+}	t_philo;
+
+
 typedef struct s_state
 {
-	int	philos;
-	int	to_die;
-	int	to_eat;
-	int	to_sleep;
-	int	x_meals;
-
+	int			philos_qty;
+	int			x_meals;
+	suseconds_t	to_die;
+	suseconds_t	to_eat;
+	suseconds_t	to_sleep;
+	suseconds_t	initial_time;
+	_Bool		is_dead;
+	t_mutex		death_locker;
+	t_mutex		writting_locker;
+	pthread_t	manager;
 }	t_state;
 
 
 
 
 
-typedef struct s_philo
-{
-	int x;
-	
-} t_philo;
 
 
 typedef pthread_mutex_t		t_mutex;

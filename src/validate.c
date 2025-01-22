@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:37:42 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/22 13:52:03 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/22 16:14:36 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int	validate_argc(int nbr_args)
 
 int	validate_argv(t_state *state, char **argv)
 {
-	state->philos = atol_4time(argv[1]);
-	if (state->philos <= -1 || state->philos > 200)
+	state->philos_qty = atol_4time(argv[1]);
+	if (state->philos_qty <= -1 || state->philos_qty > 200)
 		return (true);
 	state->to_die = atol_4time(argv[2]);
 	if (state->to_die < 60)
