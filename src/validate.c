@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:37:42 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/22 13:38:50 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:52:03 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 int	validate_argc(int nbr_args)
 {
 	if (nbr_args < 2)
-		ft_putendl_fd("./philo.. what?", STDERR_FILENO);
-	else if (nbr_args < 3)
 		ft_putendl_fd("Two's company, three's a crowd!", STDERR_FILENO);
-	else if (nbr_args < 4)
+	else if (nbr_args < 3)
 		ft_putendl_fd("When ought I to die?", STDERR_FILENO);
-	else if (nbr_args < 5)
+	else if (nbr_args < 4)
 		ft_putendl_fd("Must I starve to death?", STDERR_FILENO);
+	else if (nbr_args < 5)
+		ft_putendl_fd("Sleep's deprivation is but torment!", STDERR_FILENO);
 	else if (nbr_args > 6)
 		ft_putendl_fd("Such absurdity knows no bounds!", STDERR_FILENO);
 	else
