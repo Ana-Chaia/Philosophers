@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:25:10 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/21 20:17:48 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:40:18 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ typedef struct s_philo
 
 typedef pthread_mutex_t		t_mutex;
 
+
+//validate.c
+int	validate_argc(int nbr_args);
+int	validate_argv(t_state *state, char **argv);
+
+//utils.c
 void	ft_putendl_fd(char *s, int fd);
+suseconds_t	atol_4time(char *nbr);
 
 #endif

@@ -7,6 +7,7 @@ FLAGS = -Wall -Wextra -Werror -g
 LDFLAGS = -lpthread
 
 SRC = 	./src/main.c \
+		./src/validate.c \
 		./src/utils.c \
 
 OBJ_DIR = obj
