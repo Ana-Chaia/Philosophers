@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:20:35 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/22 18:00:16 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/23 16:01:47 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ void	create_threads(t_state *state, t_philo *philo)
 	i = 0;
 	while (i < state->philos_qty)
 	{
-		pthread_create(&philo[i].own_thread, NULL, routine, NULL);
+		pthread_create(&philo[i].own_thread, NULL, routine, &philo[i]);
 		i += 2;
 	}
 	usleep(300);
 	i = 1;
 	while (i < state->philos_qty)
 	{
-		pthread_create(&philo[i].own_thread, NULL, routine, NULL);
+		pthread_create(&philo[i].own_thread, NULL, routine, &philo[i]);
 		i += 2;
 	}
 	pthread_join(&state->manager, NULL);
@@ -66,23 +66,3 @@ void	create_threads(t_state *state, t_philo *philo)
 	}
 }
 
-void	manage(void *param)
-{
-	t_philo	*temp_philo;
-	int		i;
-	int		meals;
-
-	temp_philo = (t_philo *) param;
-	i = 0;
-	meals = 0;
-	while (i < temp_philo->philo_state->philos_qty)
-	{
-		if (count_meals_n_check_death(&temp_philo[i], &meals))
-			return (temp_philo);
-		i++;
-	}
-	if (meals == temp_philo->philo_state->philos_qty
-		* temp_philo->philo_state->x_meals)
-		return (temp_philo);
-	return (manage(temp_philo));
-}
