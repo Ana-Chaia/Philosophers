@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:25:10 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/24 15:30:42 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:46:41 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,17 +76,21 @@ int	main(int argc, char **argv);
 void	*manage(void *param);
 _Bool	count_meals_n_check_death(t_philo *philo, int *meals);
 void	print_on_terminal(t_philo *philo, char *action);
+suseconds_t	time_now(void);
 
 //philos.c
 void	philo_by_philo(t_state *state, t_philo *philo, t_mutex *fork);
 void	create_threads(t_state *state, t_philo *philo);
 
 //routine.c
-
+void *routine(void *arg);
+_Bool	is_dead(t_philo *philo);
+_Bool	is_fed(t_philo *philo);
 
 //utils.c
 void	ft_putendl_fd(char *s, int fd);
 suseconds_t	atol_4time(char *nbr);
+int	ft_strcmp(char *s1, char *s2);
 
 //validate.c
 int	validate_argc(int nbr_args);

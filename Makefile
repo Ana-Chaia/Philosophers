@@ -9,7 +9,7 @@ LDFLAGS = -lpthread
 SRC = 	./src/main.c \
 		./src/manage.c \
 		./src/philos.c \
-		./src/routine.c \
+		./src/create_routine.c \
 		./src/utils.c \
 		./src/validate.c \
 
