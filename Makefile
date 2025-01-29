@@ -9,6 +9,9 @@ LDFLAGS = -lpthread
 SRC = 	./src/main.c \
 		./src/manage.c \
 		./src/philos.c \
+		./src/rest.c \
+		./src/theorize.c \
+		./src/devour.c \
 		./src/create_routine.c \
 		./src/utils.c \
 		./src/validate.c \
@@ -41,7 +44,7 @@ $(OBJ_DIR)/%.o: ./src/%.c
 	@$(CC) $(FLAGS) -c $< -o $@ -g3 $(HEADERS)
 	
 $(NAME): $(OBJ)
-	@$(CC) -g3 $(OBJ) $(HEADERS) -o $(NAME) $(LDFLAGS)
+	@$(CC) -g $(OBJ) $(HEADERS) -o $(NAME) $(LDFLAGS)
 	@echo "Compilation complete!"
 
 clean:

@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:03 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/27 17:34:00 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:01:47 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,27 @@ int	ft_strcmp(char *s1, char *s2)
 		i++;
 	}
 	return (s1[i] - s2[i]);
+}
+
+void	my_sleep(suseconds_t milliseconds)
+{
+	suseconds_t	start;
+
+	start = time_now();
+	while (time_now() - start < milliseconds)
+		usleep(250);
+}
+
+void	bye_bye(t_state *state, t_philo *philo)
+{
+	int	i;
+
+	i = 0;
+	while (i < state->philos_qty)
+	{
+		pthread_mutex_destroy(&philo[i].nbr_of_meals_locker);
+		pthread_mutex_destroy(philo[i++].right_fork);
+	}
+	pthread_mutex_destroy(&state->writting_locker);
+	pthread_mutex_destroy(&state->death_locker);
 }

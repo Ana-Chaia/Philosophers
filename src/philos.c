@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:20:35 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/27 18:12:58 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:11:41 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	philo_by_philo(t_state *state, t_philo *philo, t_mutex *fork)
 			philo[i].left_fork = &fork[0];
 		else
 			philo[i].left_fork = &fork[i + 1];
-		philo[i].philo_state = state;
+		philo[i].state = state;
 		state->initial_time = time_now();
 		philo[i].last_meal = state->initial_time;
 		i++;
@@ -50,7 +50,7 @@ void	create_threads(t_state *state, t_philo *philo)
 		pthread_create(&philo[i].own_thread, NULL, routine, &philo[i]);
 		i += 2;
 	}
-	usleep(300);
+	usleep(100);
 	i = 1;
 	while (i < state->philos_qty)
 	{

@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:25:10 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/27 18:46:41 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:02:55 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,11 @@
 
 
 # define THE_END "\033[0;91mDEATH TORE US APART\033[0m"
-
+# define RIGHT_F "has taken the right fork"
+# define LEFT_F "has taken the left fork"
+# define EATING "is feasting on a banquet!!"
+# define SLEEP "ZZzzzZzzZZZZZzzzz"
+# define THINK "is thinking about the world"
 
 typedef pthread_mutex_t		t_mutex;
 
@@ -53,7 +57,7 @@ typedef struct s_philo
 	t_mutex		*right_fork;
 	t_mutex		*left_fork;
 	suseconds_t	last_meal;
-	t_state		*philo_state;
+	t_state		*state;
 	pthread_t	own_thread;
 
 }	t_philo;
@@ -82,8 +86,17 @@ suseconds_t	time_now(void);
 void	philo_by_philo(t_state *state, t_philo *philo, t_mutex *fork);
 void	create_threads(t_state *state, t_philo *philo);
 
+//rest.c
+void	rest(t_philo *philo);
+
+//theorize.c
+void	theorize(t_philo *philo);
+
+//devour.c
+void	devour(t_philo *philo);
+
 //routine.c
-void *routine(void *arg);
+void 	*routine(void *arg);
 _Bool	is_dead(t_philo *philo);
 _Bool	is_fed(t_philo *philo);
 
@@ -91,6 +104,8 @@ _Bool	is_fed(t_philo *philo);
 void	ft_putendl_fd(char *s, int fd);
 suseconds_t	atol_4time(char *nbr);
 int	ft_strcmp(char *s1, char *s2);
+void	my_sleep(suseconds_t milliseconds);
+void	bye_bye(t_state *state, t_philo *philo);
 
 //validate.c
 int	validate_argc(int nbr_args);

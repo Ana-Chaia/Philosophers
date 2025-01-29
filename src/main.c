@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:36:43 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/24 15:12:17 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:02:34 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int argc, char **argv)
 	}
 	philo_by_philo(&state, philo, fork);
 	create_threads(&state, philo);
-	
+	bye_bye(&state, philo);
 	return (0);
 }
 
