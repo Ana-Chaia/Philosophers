@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 16:00:13 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/30 15:10:48 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/30 19:13:37 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	*manage(void *param)
 	temp_philo = (t_philo *)param;
 	i = -1;
 	meals = 0;
-	// printf("temp_philo: Manager %ld\n", temp_philo[i].last_meal);
 	while (++i < temp_philo->state->philos_qty)
 	{
 		if (count_meals_n_check_death(&temp_philo[i], &meals))
@@ -65,33 +64,9 @@ void	print_on_terminal(t_philo *philo, char *action)
 	if (*action == *THE_END)
 		philo->state->is_dead = true;
 	pthread_mutex_unlock(&philo->state->death_locker);
-	printf("Time: %ld Philo n. %d  %s\n", time, philo->nbr, action);
+	printf("%ld Philo n.%d  %s\n", time, philo->nbr, action);
 	pthread_mutex_unlock(&philo->state->writting_locker);
 }
-
-// long time_now() {
-//     struct timeval tv;
-//     int result = gettimeofday(&tv, NULL);
-    
-//     if (result != 0) {
-//         perror("Erro ao obter o tempo");
-//         exit(EXIT_FAILURE);
-//     }
-
-//     printf("Segundos: %ld, Microssegundos: %ld\n", tv.tv_sec, tv.tv_usec);
-//     return tv.tv_sec * 1000 + tv.tv_usec / 1000;
-// }
-
-
-// long time_now() {
-//     struct timeval tv;
-//     if (gettimeofday(&tv, NULL) != 0) {
-//         perror("Erro ao obter o tempo");
-//         exit(EXIT_FAILURE);
-//     }
-//     return tv.tv_sec * 1000 + tv.tv_usec / 1000;
-// }
-
 
 suseconds_t	time_now(void)
 {
@@ -100,4 +75,3 @@ suseconds_t	time_now(void)
 	gettimeofday(&tv, NULL);
 	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
-

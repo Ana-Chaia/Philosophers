@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:03 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/30 15:14:27 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:34:29 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ suseconds_t	atol_4time(char *nbr)
 		return (false);
 	return (nb);
 }
+
 int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;

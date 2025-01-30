@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:37:42 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/22 16:14:36 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/30 18:58:32 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,25 @@ int	validate_argv(t_state *state, char **argv)
 	else
 		state->x_meals = -1;
 	return (false);
+}
+
+int	is_positive_number(char **argv)
+{
+	int		i;
+	char	*arg;
+
+	i = 1;
+	while (argv[i])
+	{
+		arg = argv[i];
+		while (*arg >= '0' && *arg <= '9')
+			arg++;
+		if (*arg != '\0')
+		{
+			ft_putendl_fd("Wisdom: try positive numbers.", STDERR_FILENO);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
 }

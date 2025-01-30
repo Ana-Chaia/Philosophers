@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 18:48:47 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/29 14:05:35 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:31:11 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,3 @@ void	devour(t_philo *philo)
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->left_fork);
 }
-
-

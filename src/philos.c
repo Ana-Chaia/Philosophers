@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:20:35 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/30 15:56:35 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:30:12 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,6 @@ void	create_threads(t_state *state, t_philo *philo)
 		i += 1;
 	}
 	usleep(242);
-	// i = 1;
-	// while (i < state->philos_qty)
-	// {
-	// 	pthread_create(&philo[i].own_thread, NULL, routine, &philo[i]);
-	// 	i += 2;
-	// }
 	pthread_create(&state->manager, NULL, manage, philo);
 	i = 0;
 	while (i < state->philos_qty)
@@ -65,4 +59,3 @@ void	create_threads(t_state *state, t_philo *philo)
 	}
 	pthread_join(state->manager, NULL);
 }
-
