@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:03 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/29 17:01:47 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:14:27 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ void	bye_bye(t_state *state, t_philo *philo)
 	while (i < state->philos_qty)
 	{
 		pthread_mutex_destroy(&philo[i].nbr_of_meals_locker);
-		pthread_mutex_destroy(philo[i++].right_fork);
+		pthread_mutex_destroy(philo[i].right_fork);
+		i++;
 	}
 	pthread_mutex_destroy(&state->writting_locker);
 	pthread_mutex_destroy(&state->death_locker);

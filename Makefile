@@ -44,7 +44,8 @@ $(OBJ_DIR)/%.o: ./src/%.c
 	@$(CC) $(FLAGS) -c $< -o $@ -g3 $(HEADERS)
 	
 $(NAME): $(OBJ)
-	@$(CC) -g $(OBJ) $(HEADERS) -o $(NAME) $(LDFLAGS)
+	@$(CC) -g $(OBJ) $(HEADERS) -o $(NAME) $(LDFLAGS) 
+#-fsanitize=thread
 	@echo "Compilation complete!"
 
 clean:
@@ -55,7 +56,7 @@ fclean: clean
 	@echo "Cleaning completed!"
 
 val: $(NAME)
-	valgrind --leak-check=full --show-leak-kinds=all -q --track-origins=yes --suppressions=readline.supp ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all -q --track-origins=yes ./$(NAME)
 
 re: fclean all
 

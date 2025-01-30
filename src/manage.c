@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 16:00:13 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/29 17:26:12 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:10:48 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,19 @@ void	*manage(void *param)
 	int		i;
 	int		meals;
 
-	temp_philo = (t_philo *) param;
-	i = 0;
+	temp_philo = (t_philo *)param;
+	i = -1;
 	meals = 0;
-	while (i < temp_philo->state->philos_qty)
+	// printf("temp_philo: Manager %ld\n", temp_philo[i].last_meal);
+	while (++i < temp_philo->state->philos_qty)
 	{
-		if (count_meals_n_check_death(&temp_philo[i++], &meals))
+		if (count_meals_n_check_death(&temp_philo[i], &meals))
 			return (param);
 	}
 	if (meals == temp_philo->state->philos_qty
 		* temp_philo->state->x_meals)
 		return (param);
+	usleep(200);
 	return (manage(param));
 }
 
@@ -67,11 +69,35 @@ void	print_on_terminal(t_philo *philo, char *action)
 	pthread_mutex_unlock(&philo->state->writting_locker);
 }
 
+// long time_now() {
+//     struct timeval tv;
+//     int result = gettimeofday(&tv, NULL);
+    
+//     if (result != 0) {
+//         perror("Erro ao obter o tempo");
+//         exit(EXIT_FAILURE);
+//     }
+
+//     printf("Segundos: %ld, Microssegundos: %ld\n", tv.tv_sec, tv.tv_usec);
+//     return tv.tv_sec * 1000 + tv.tv_usec / 1000;
+// }
+
+
+// long time_now() {
+//     struct timeval tv;
+//     if (gettimeofday(&tv, NULL) != 0) {
+//         perror("Erro ao obter o tempo");
+//         exit(EXIT_FAILURE);
+//     }
+//     return tv.tv_sec * 1000 + tv.tv_usec / 1000;
+// }
+
+
 suseconds_t	time_now(void)
 {
-	struct timeval	secs;
+	struct timeval	tv;
 
-	gettimeofday(&secs, NULL);
-	return (secs.tv_sec * 1000 + secs.tv_usec / 1000);
+	gettimeofday(&tv, NULL);
+	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
 }
 
