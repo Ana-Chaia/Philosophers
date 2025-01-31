@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:37:42 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/22 16:14:36 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/31 15:35:32 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,24 +41,66 @@ int	validate_argc(int nbr_args)
 int	validate_argv(t_state *state, char **argv)
 {
 	state->philos_qty = atol_4time(argv[1]);
-	if (state->philos_qty <= -1 || state->philos_qty > 200)
-		return (true);
 	state->to_die = atol_4time(argv[2]);
-	if (state->to_die < 60)
-		return (true);
 	state->to_eat = atol_4time(argv[3]);
-	if (state->to_eat < 60)
-		return (true);
 	state->to_sleep = atol_4time(argv[4]);
-	if (state->to_sleep < 60)
-		return (true);
+	state->x_meals = -1;
 	if (argv[5])
-	{
 		state->x_meals = atol_4time(argv[5]);
-		if (state->x_meals < 0)
+	printf("%d", state->x_meals);
+	if ((state->philos_qty <= 0 || state->philos_qty > 200) || state->to_die < 60 || state->to_eat < 60 || state->to_sleep < 60 || (argv[5] && state->x_meals < 0))
+	{
+		ft_putendl_fd("Thy choices have been unwise.", STDERR_FILENO);
+		return (true);
+	}	
+	return (false);
+}
+
+// int	validate_argv(t_state *state, char **argv)
+// {
+// 	state->philos_qty = atol_4time(argv[1]);
+// 	if (state->philos_qty <= -1 || state->philos_qty > 200)
+// 		return (true);
+// 	state->to_die = atol_4time(argv[2]);
+// 	if (state->to_die < 60)
+// 		return (true);
+// 	state->to_eat = atol_4time(argv[3]);
+// 	if (state->to_eat < 60)
+// 		return (true);
+// 	state->to_sleep = atol_4time(argv[4]);
+// 	if (state->to_sleep < 60)
+// 		return (true);
+// 	if (argv[5])
+// 	{
+// 		state->x_meals = atol_4time(argv[5]);
+// 		if (state->x_meals < 0)
+// 			return (true);
+// 	}
+// 	else
+// 	{
+// 		state->x_meals = -1;
+// 		ft_putendl_fd("Thy choices have been unwise.", STDERR_FILENO);
+// 	}
+// 	return (false);
+// }
+
+int	not_positive_nbr(int argc, char **argv)
+{
+	int 	i;
+	char	*arg;
+	
+	i = 1;
+	while (i < argc)
+	{
+		arg = argv[i];
+		while (*arg >= '0' && *arg <= '9')
+			arg++;
+		if (*arg != '\0')
+		{
+			ft_putendl_fd("Wisdom: try positive numbers.", STDERR_FILENO);
 			return (true);
+		}
+		i++;
 	}
-	else
-		state->x_meals = -1;
 	return (false);
 }

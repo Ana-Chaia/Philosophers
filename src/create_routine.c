@@ -6,12 +6,11 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 16:00:52 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/29 17:20:31 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/01/31 12:24:45 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
 
 _Bool	is_fed(t_philo *philo)
 {
@@ -36,7 +35,6 @@ _Bool	is_dead(t_philo *philo)
 	pthread_mutex_unlock(&philo->state->death_locker);
 	return (flag);
 }
-
 
 void	*routine(void *arg)
 {

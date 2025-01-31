@@ -2,7 +2,7 @@ NAME = philo
 
 CC = cc
 
-FLAGS = -Wall -Wextra -Werror -g 
+FLAGS = -Wall -Wextra -Werror -g3 
 
 LDFLAGS = -lpthread
 
@@ -44,8 +44,8 @@ $(OBJ_DIR)/%.o: ./src/%.c
 	@$(CC) $(FLAGS) -c $< -o $@ -g3 $(HEADERS)
 	
 $(NAME): $(OBJ)
-	@$(CC) -g $(OBJ) $(HEADERS) -o $(NAME) $(LDFLAGS) 
-#-fsanitize=thread
+	@$(CC) -g3 $(OBJ) $(HEADERS) -o $(NAME) $(LDFLAGS) 
+#-fsanitize=address
 	@echo "Compilation complete!"
 
 clean:
