@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:36:43 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/31 12:49:13 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/02/02 17:18:56 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,9 @@ int	main(int argc, char **argv)
 	if (validate_argc(argc))
 		return (EXIT_FAILURE);
 	if (validate_argv(&state, argv))
-	{
-		//ft_putendl_fd("Thy choices have been unwise.", STDERR_FILENO);
 		return (EXIT_FAILURE);
-	}
 	philo_by_philo(&state, philo, fork);
 	create_threads(&state, philo);
 	bye_bye(&state, philo);
 	return (0);
 }
-

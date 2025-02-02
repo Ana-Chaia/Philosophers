@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 16:00:13 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/31 15:24:20 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/02/02 17:17:43 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,7 @@ void	*manage(void *param)
 		if (meals == temp_philo->state->philos_qty
 			* temp_philo->state->x_meals)
 			return (param);
-		//usleep(300);
 	}
-	// {
-	// 	perror("usleep");
-	// 	exit(1);
-	// }
 	return (manage(param));
 }
 
@@ -71,7 +66,7 @@ void	print_on_terminal(t_philo *philo, char *action)
 	if (*action == *THE_END)
 		philo->state->is_dead = true;
 	pthread_mutex_unlock(&philo->state->death_locker);
-	printf("Time: %ld Philo n. %d  %s\n", time, philo->nbr, action);
+	printf("%ld %d %s\n", time, philo->nbr, action);
 	pthread_mutex_unlock(&philo->state->writting_locker);
 }
 

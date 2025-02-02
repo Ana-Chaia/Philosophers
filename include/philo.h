@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:25:10 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/31 12:36:35 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/02/02 17:19:44 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,16 @@
 # include <stdbool.h>
 # include <sys/time.h>
 
-# define THE_END "\033[0;91mDEATH TORE US APART\033[0m"
+# define THE_END "died"
+//"\033[0;91mDEATH TORE US APART\033[0m"
 # define RIGHT_F "has taken the right fork"
 # define LEFT_F "has taken the left fork"
-# define EATING "is feasting on a banquet!!"
-# define SLEEP "ZZzzzZzzZZZZZzzzz"
-# define THINK "is thinking about the world"
+# define EATING "is eating"
+//"is feasting on a banquet!!"
+# define SLEEP "is sleeping"
+//"ZZzzzZzzZZZZZzzzz"
+# define THINK "is thinking"
+//"is thinking about the world"
 
 typedef pthread_mutex_t		t_mutex;
 
@@ -97,7 +101,6 @@ void		bye_bye(t_state *state, t_philo *philo);
 //validate.c
 int			validate_argc(int nbr_args);
 int			validate_argv(t_state *state, char **argv);
-
-int	not_positive_nbr(int argc, char **argv);
+int			not_positive_nbr(int argc, char **argv);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:20:35 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/31 15:24:50 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/02/02 17:16:40 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,15 +48,9 @@ void	create_threads(t_state *state, t_philo *philo)
 	while (i < state->philos_qty)
 	{
 		pthread_create(&philo[i].own_thread, NULL, routine, &philo[i]);
-		i += 2;
+		i++;
 	}
-	//usleep(242);
-	i = 1;
-	while (i < state->philos_qty)
-	{
-		pthread_create(&philo[i].own_thread, NULL, routine, &philo[i]);
-		i += 2;
-	}
+	i = 0;
 	while (i < state->philos_qty)
 	{
 		pthread_join(philo[i].own_thread, NULL);
