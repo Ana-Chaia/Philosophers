@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:37:42 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/02/02 17:18:37 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/02/02 18:32:13 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int	validate_argv(t_state *state, char **argv)
 	state->x_meals = -1;
 	if (argv[5])
 		state->x_meals = atol_4time(argv[5]);
-	printf("%d", state->x_meals);
 	if ((state->philos_qty <= 0 || state->philos_qty > 200)
 		|| state->to_die < 60 || state->to_eat < 60 || state->to_sleep < 60
 		|| (argv[5] && state->x_meals < 0))
