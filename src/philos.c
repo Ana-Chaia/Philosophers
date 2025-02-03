@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 15:20:35 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/02/02 17:16:40 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:03:10 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@ void	philo_by_philo(t_state *state, t_philo *philo, t_mutex *fork)
 			philo[i].left_fork = &fork[0];
 		else
 			philo[i].left_fork = &fork[i + 1];
+		pthread_mutex_init(&philo[i].time_mutex, NULL);
 		philo[i].state = state;
-		state->initial_time = time_now();
+		state->initial_time = time_now(philo);
 		philo[i].last_meal = state->initial_time;
 		i++;
 	}

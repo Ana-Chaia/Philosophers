@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 18:48:47 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/31 12:27:44 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:01:27 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	devour(t_philo *philo)
 	{
 		pthread_mutex_lock(philo->left_fork);
 		print_on_terminal(philo, RIGHT_F);
-		my_sleep(philo->state->to_die + 11);
+		my_sleep(philo->state->to_die + 11, philo);
 		pthread_mutex_unlock(philo->left_fork);
 		return ;
 	}
@@ -44,10 +44,10 @@ void	devour(t_philo *philo)
 		n_even_p_take_f(philo);
 	print_on_terminal(philo, EATING);
 	pthread_mutex_lock(&philo->nbr_of_meals_locker);
-	philo->last_meal = time_now();
+	philo->last_meal = time_now(philo);
 	philo->meals++;
 	pthread_mutex_unlock(&philo->nbr_of_meals_locker);
-	my_sleep(philo->state->to_eat);
+	my_sleep(philo->state->to_eat, philo);
 	pthread_mutex_unlock(philo->right_fork);
 	pthread_mutex_unlock(philo->left_fork);
 }

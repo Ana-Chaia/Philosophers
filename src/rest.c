@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:05:26 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/29 15:34:40 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/02/03 16:00:44 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	rest(t_philo *philo)
 {
 	print_on_terminal(philo, SLEEP);
-	my_sleep(philo->state->to_sleep);
+	my_sleep(philo->state->to_sleep, philo);
 }

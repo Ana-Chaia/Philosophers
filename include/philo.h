@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 14:25:10 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/02/02 17:19:44 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:03:24 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct s_philo
 	t_mutex		nbr_of_meals_locker;
 	t_mutex		*right_fork;
 	t_mutex		*left_fork;
+	t_mutex		time_mutex;
 	suseconds_t	last_meal;
 	t_state		*state;
 	pthread_t	own_thread;
@@ -71,7 +72,7 @@ int			main(int argc, char **argv);
 void		*manage(void *param);
 _Bool		count_meals_n_check_death(t_philo *philo, int *meals);
 void		print_on_terminal(t_philo *philo, char *action);
-suseconds_t	time_now(void);
+suseconds_t	time_now(t_philo *philo);
 
 //philos.c
 void		philo_by_philo(t_state *state, t_philo *philo, t_mutex *fork);
@@ -95,7 +96,7 @@ _Bool		is_fed(t_philo *philo);
 void		ft_putendl_fd(char *s, int fd);
 suseconds_t	atol_4time(char *nbr);
 int			ft_strcmp(char *s1, char *s2);
-void		my_sleep(suseconds_t milliseconds);
+void		my_sleep(suseconds_t milliseconds, t_philo *philo);
 void		bye_bye(t_state *state, t_philo *philo);
 
 //validate.c

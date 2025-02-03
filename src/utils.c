@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/21 19:04:03 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/01/31 12:24:22 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:04:30 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,12 +55,12 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-void	my_sleep(suseconds_t milliseconds)
+void	my_sleep(suseconds_t milliseconds, t_philo *philo)
 {
 	suseconds_t	start;
 
-	start = time_now();
-	while (time_now() - start < milliseconds)
+	start = time_now(philo);
+	while (time_now(philo) - start < milliseconds)
 		usleep(250);
 }
 
@@ -73,6 +73,7 @@ void	bye_bye(t_state *state, t_philo *philo)
 	{
 		pthread_mutex_destroy(&philo[i].nbr_of_meals_locker);
 		pthread_mutex_destroy(philo[i].right_fork);
+		pthread_mutex_destroy(&philo[i].time_mutex);
 		i++;
 	}
 	pthread_mutex_destroy(&state->writting_locker);

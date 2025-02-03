@@ -6,7 +6,7 @@
 /*   By: anacaro5 <anacaro5@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 16:00:13 by anacaro5          #+#    #+#             */
-/*   Updated: 2025/02/02 17:17:43 by anacaro5         ###   ########.fr       */
+/*   Updated: 2025/02/03 17:37:47 by anacaro5         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	*manage(void *param)
 _Bool	count_meals_n_check_death(t_philo *philo, int *meals)
 {
 	pthread_mutex_lock(&philo->nbr_of_meals_locker);
-	if (time_now() - philo->last_meal > philo->state->to_die)
+	if (time_now(philo) - philo->last_meal > philo->state->to_die)
 	{
 		pthread_mutex_unlock(&philo->nbr_of_meals_locker);
 		print_on_terminal(philo, THE_END);
@@ -55,7 +55,7 @@ void	print_on_terminal(t_philo *philo, char *action)
 	suseconds_t	time;
 
 	pthread_mutex_lock(&philo->state->writting_locker);
-	time = time_now() - philo->state->initial_time;
+	time = time_now(philo) - philo->state->initial_time;
 	pthread_mutex_lock(&philo->state->death_locker);
 	if (philo->state->is_dead)
 	{
@@ -70,10 +70,16 @@ void	print_on_terminal(t_philo *philo, char *action)
 	pthread_mutex_unlock(&philo->state->writting_locker);
 }
 
-suseconds_t	time_now(void)
+suseconds_t	time_now(t_philo *philo)
 {
-	static struct timeval	tv = {0};
+	struct timeval	tv;
+	suseconds_t		time_ms;
 
+	tv.tv_sec = 0;
+	tv.tv_usec = 0;
+	pthread_mutex_lock(&philo->time_mutex);
 	gettimeofday(&tv, NULL);
-	return (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+	time_ms = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+	pthread_mutex_unlock(&philo->time_mutex);
+	return (time_ms);
 }
